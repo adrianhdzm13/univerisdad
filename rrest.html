@@ -1,0 +1,136 @@
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	
+	<title>Universidad de la vida</title>
+
+
+
+	<link rel="stylesheet" href="style/estiloss.css">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src='js/script.js'></script>
+</head>
+<body>
+	<header>
+		<nav>
+			<ul>
+				<a href='quien.html'>
+					<li>Quienes somos</li>
+				</a>
+				<a href='consult.php'>
+					<li>Consulta PHP</li>
+				</a>
+			</ul>
+	
+			<a href="index.html"><img id='logo' src='pictures/logo_san_mateo.jpg	'></a>
+	
+			<ul>
+				<a href='programas.html'>
+					<li>Nuestros Programas</li>
+				</a>
+				<a href='rrest.html'>
+					<li>Rest</li>
+				</a>
+				<a href="LoginPHP/index.php"><img src="pictures/usuario.png" alt="usuario" id="icono"></a>
+			</ul>
+		</nav>
+	</header>
+
+	<section id='banner'>
+   	
+	</section>
+
+	<section id='body'>
+
+	<body style="background-color:#DFE0E2;">
+       <div class="container-fluid">
+          <div class="row">
+          <div class="col-md-12 text-center">
+             <br>
+            <h1><font color="red">TRIGGER</font></h1>
+            <br>
+            <br>
+          </div>
+    <div class="col-md-12 
+    ">
+        <table class="table"style="background-color:#1E1E1E;">
+          <thead> 
+              <tr>
+               
+                <th scope="col"><font color="#5090C1">ID</font></th>
+                <th scope="col"><font color="#5090C1">NROIDENTIFI</font></th>
+                <th scope="col"><font color="#5090C1">NOMBRE</font></th>
+                <th scope="col"><font color="#5090C1">APELLIDO</font></th>
+                <th scope="col"><font color="#5090C1">GENERO</font></th>
+                <th scope="col"><font color="#5090C1">DIRECCION</font></th>
+                <th scope="col"><font color="#5090C1">TELEFONO</font></th>
+                <th scope="col"><font color="#5090C1">EMAIL</font></th>
+                <th scope="col"><font color="#5090C1">USUARIO</font></th>
+                <th scope="col"><font color="#5090C1">FECHA_HORA</font></th>
+                <th scope="col"><font color="#5090C1">SENTENCIA</font></th>
+              
+              </tr>
+          </thead>
+          <tbody id="cuerpo">
+               
+          </tbody>
+        </table>
+    </div>
+      </div>
+    </div>
+    <script>
+      //creamos una constante, va ser igual a el id llamado cuerpo
+      const tabla = document.querySelector('#cuerpo');
+      //opciones de la consulta
+      const opciones = {
+        method : 'POST'
+      }
+      //dentro de esta funcion la ruta donde se consume el JSON
+      fetch('consulta.php',opciones)
+          .then(respuesta => respuesta.json())
+          .then(resultado =>{
+
+                //para recorrer el resultado
+                resultado.forEach(elemento =>{
+                    tabla.innerHTML += `
+                <tr>
+                  <th scope="row"><font color="white">${elemento.ID}</font></th>
+                  <td><font color="White">${elemento.NROIDENTIFI}</font></td>
+                  <td><font color="White">${elemento.NOMBRE}</font></td> 
+                  <td><font color="White">${elemento.APELLIDO}</font></td>
+                  <td><font color="White">${elemento.GENERO}</font></td>
+                  <td><font color="White">${elemento.DIRECCION}</font></td>
+                  <td><font color="White">${elemento.TELEFONO}</font></td>
+                  <td><font color="White">${elemento.EMAIL}</font></td>
+                  <td><font color="White">${elemento.USUARIO}</font></td>
+                  <td><font color="White">${elemento.FECHA_HORA}</font></td>
+                  <td><font color="White">${elemento.SENTENCIA }</font></td>
+                </tr> 
+                    `
+                });
+
+
+            //para mostrar el json en la consola
+           // console.log(resultado);
+          });
+
+    </script>
+
+	
+
+<footer>
+    <p>&copy; Yeison Adrián Rico, Saul Leonardo Barrera & Cristian David Vergel - V Semestre - 2021 - Fundacion Universitaria San Mateo</p>
+</footer>
+	
+
+	
+</body>
+
+
+</html>
